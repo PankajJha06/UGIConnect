@@ -1,30 +1,32 @@
-[
-    {
-        "title": "Mid-Semester Examinations Schedule",
-        "date": "Nov 8, 2025",
-        "description": "Mid-semester exams will be conducted from November 20-25. Check your email for detailed schedule.",
-        "tags": [
-            "Urgent"
-        ]
-    },
-    {
-        "title": "New Library Timings",
-        "date": "Nov 6, 2025",
-        "description": "The library will now be open from 7:00 AM to 11:00 PM on all weekdays starting November 10th."
-    },
-    {
-        "title": "Workshop: AI in Education",
-        "date": "Nov 9, 2025",
-        "description": "A hands-on workshop on AI tools for students and faculty. Limited seats—register via Events."
-    },
-    {
-        "title": "Cafeteria Renovation Update",
-        "date": "Nov 7, 2025",
-        "description": "Renovation enters final phase. Temporary kiosks near Block B will operate during lunch hours."
-    },
-    {
-        "title": "Guest Lecture: Future of Tech",
-        "date": "Nov 11, 2025",
-        "description": "Dr. Sharma from IIT Delhi will be delivering a lecture on \"Quantum Computing\" this Friday at 2 PM."
-    }
-]
+{
+    "announcements": [
+        {
+            "title": "Mid-Semester Examinations Schedule",
+            "date": "Nov 8, 2025",
+            "description": "Mid-semester exams will be conducted from November 20-25. Check your email for detailed schedule.",
+            "tags": [
+                "Urgent"
+            ]
+        },
+        {
+            "title": "New Library Timings",
+            "date": "Nov 6, 2025",
+            "description": "The library will now be open from 7:00 AM to 11:00 PM on all weekdays starting November 10th."
+        },
+        {
+            "title": "Workshop: AI in Education",
+            "date": "Nov 9, 2025",
+            "description": "A hands-on workshop on AI tools for students and faculty. Limited seats—register via Events."
+        },
+        {
+            "title": "Cafeteria Renovation Update",
+            "date": "Nov 7, 2025",
+            "description": "Renovation enters final phase. Temporary kiosks near Block B will operate during lunch hours."
+        },
+        {
+            "title": "Guest Lecture: Future of Tech",
+            "date": "Nov 11, 2025",
+            "description": "Dr. Sharma from IIT Delhi will be delivering a lecture on \"Quantum Computing\" this Friday at 2 PM."
+        }
+    ]
+}

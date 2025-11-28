@@ -16,7 +16,7 @@ title: UGIConnect - Home
         </svg>
         <span>Upcoming Event</span>
       </div>
-      {% set upcomingEvents = events | upcomingOnly | sortByDate %}
+      {% set upcomingEvents = events.events | upcomingOnly | sortByDate %}
       {% set featuredEvent = upcomingEvents[0] %}
       <h1 class="event-title">{{ featuredEvent.title }}</h1>
       <p class="event-description">{{ featuredEvent.description }}</p>
@@ -60,7 +60,7 @@ title: UGIConnect - Home
       <h2>Latest Announcements</h2>
     </div>
     <div class="announcements-list">
-      {% for announcement in announcements.slice(0, 4) %}
+      {% for announcement in announcements.announcements.slice(0, 4) %}
       <div class="announcement-card">
         <div class="announcement-content">
           {% if announcement.tags %}
@@ -108,7 +108,7 @@ title: UGIConnect - Home
       <button class="slide-nav prev outside" type="button" aria-label="Previous photo">←</button>
       <div class="slideshow">
         <div class="slides">
-          {% set recentEvent = gallery[0] %}
+          {% set recentEvent = gallery.gallery[0] %}
           {% for image in recentEvent.images.slice(0, 4) %}
           <img class="slide {% if loop.first %}active{% endif %}" src="{{ image }}" alt="{{ recentEvent.category }} - Photo {{ loop.index }}">
           {% endfor %}

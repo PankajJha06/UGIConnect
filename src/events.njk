@@ -10,7 +10,7 @@ title: UGIConnect - Events
 </section>
 
 <section class="events-grid">
-    {% for event in events | upcomingOnly | sortByDate %}
+    {% for event in events.events | upcomingOnly | sortByDate %}
     <div class="event-card-small reveal">
         <div class="event-image">
             <img src="{{ event.image }}" alt="{{ event.title }}">

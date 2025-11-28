@@ -8,13 +8,13 @@ eleventyExcludeFromCollections: true
   <subtitle>Latest events and announcements from Uttam Institute</subtitle>
   <link href="https://ugiconnect.netlify.app/feed.xml" rel="self"/>
   <link href="https://ugiconnect.netlify.app/"/>
-  <updated>{{ announcements[0].date | toIsoString }}</updated>
+  <updated>{{ announcements.announcements[0].date | toIsoString }}</updated>
   <id>https://ugiconnect.netlify.app/</id>
   <author>
     <name>UGI Connect</name>
   </author>
 
-  {% for item in announcements %}
+  {% for item in announcements.announcements %}
   <entry>
     <title>New Announcement: {{ item.title }}</title>
     <link href="https://ugiconnect.netlify.app/announcements/"/>
@@ -27,7 +27,7 @@ eleventyExcludeFromCollections: true
   </entry>
   {% endfor %}
 
-  {% for item in events %}
+  {% for item in events.events %}
   <entry>
     <title>Upcoming Event: {{ item.title }}</title>
     <link href="https://ugiconnect.netlify.app/events/"/>
