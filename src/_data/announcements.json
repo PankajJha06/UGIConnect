@@ -27,14 +27,6 @@
       "title": "Guest Lecture: Future of Tech",
       "date": "Nov 11, 2025",
       "description": "Dr. Sharma from IIT Delhi will be delivering a lecture on \"Quantum Computing\" this Friday at 2 PM."
-    },
-    {
-      "title": "test",
-      "date": "Nov 12, 2025",
-      "description": "test desc",
-      "tags": [
-        "Urgent"
-      ]
     }
   ]
 }
