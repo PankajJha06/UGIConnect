@@ -1,0 +1,22 @@
+{
+    "name": "ugiconnect",
+    "version": "1.0.0",
+    "description": "UGI Connect - College Events and Announcements Portal",
+    "main": "index.js",
+    "scripts": {
+        "build": "eleventy",
+        "start": "eleventy --serve",
+        "clean": "rm -rf public"
+    },
+    "keywords": [
+        "eleventy",
+        "jamstack",
+        "cms",
+        "netlify"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@11ty/eleventy": "^2.0.1"
+    }
+}

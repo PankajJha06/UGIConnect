@@ -1,0 +1,120 @@
+---
+layout: base.njk
+title: UGIConnect - Home
+---
+
+<section class="upcoming-event-section" id="events">
+  <div class="event-overlay"></div>
+  <div class="event-content">
+    <div class="event-card">
+      <div class="event-badge">
+        <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Upcoming Event</span>
+      </div>
+      {% set upcomingEvents = events | upcomingOnly | sortByDate %}
+      {% set featuredEvent = upcomingEvents[0] %}
+      <h1 class="event-title">{{ featuredEvent.title }}</h1>
+      <p class="event-description">{{ featuredEvent.description }}</p>
+      <div class="event-meta">
+        <div class="meta-item">
+          <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>{{ featuredEvent.date }}</span>
+        </div>
+        <div class="meta-item">
+          <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>{{ featuredEvent.location }}</span>
+        </div>
+      </div>
+      <div class="event-actions">
+        <a href="/events/" class="view-events-btn">
+          View All Events
+          <span class="arrow-icon">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="announcements-section" id="announcements">
+  <div class="announcements-container">
+    <div class="section-header">
+      <svg class="bell-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.73 21a2 2 0 01-3.46 0" />
+        <path d="M2 8c0-2.2.7-4.3 2-6" />
+        <path d="M22 8a10 10 0 00-2-6" />
+      </svg>
+      <h2>Latest Announcements</h2>
+    </div>
+    <div class="announcements-list">
+      {% for announcement in announcements.slice(0, 4) %}
+      <div class="announcement-card">
+        <div class="announcement-content">
+          {% if announcement.tags %}
+          <div class="announcement-tags">
+            {% for tag in announcement.tags %}
+            <span class="tag tag-urgent">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <h3 class="announcement-title">{{ announcement.title }}</h3>
+          <p class="announcement-description">{{ announcement.description }}</p>
+          <div class="announcement-date">
+            <svg class="date-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>{{ announcement.date }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="announcements-actions">
+      <a href="/announcements/" class="view-events-btn">
+        View All Announcements
+        <span class="arrow-icon">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="gallery-container">
+    <div class="gallery-header">
+      <div class="gallery-heading">
+        <h2>Previous Events</h2>
+        <p>A quick look back at standout moments from recent events held across campus.</p>
+      </div>
+      <a href="/gallery/" class="secondary-btn gallery-cta">View Gallery</a>
+    </div>
+
+    <div class="slideshow-row">
+      <button class="slide-nav prev outside" type="button" aria-label="Previous photo">←</button>
+      <div class="slideshow">
+        <div class="slides">
+          {% set recentEvent = gallery[0] %}
+          {% for image in recentEvent.images.slice(0, 4) %}
+          <img class="slide {% if loop.first %}active{% endif %}" src="{{ image }}" alt="{{ recentEvent.category }} - Photo {{ loop.index }}">
+          {% endfor %}
+        </div>
+      </div>
+      <button class="slide-nav next outside" type="button" aria-label="Next photo">→</button>
+    </div>
+  </div>
+</section>

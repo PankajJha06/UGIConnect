@@ -1,0 +1,274 @@
+---
+layout: base.njk
+title: UGIConnect - Gallery
+---
+
+<style>
+    .page-header {
+        padding: 6rem 3rem 3rem;
+        background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: var(--brand-blue);
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .gallery-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background: #f0f0f0;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lightbox.active {
+        display: flex;
+    }
+
+    .lightbox-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+    }
+
+    .lightbox-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: #ffffff;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: #ffffff;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
+    }
+
+    .gallery-category {
+        margin-bottom: 3rem;
+    }
+
+    .category-title {
+        font-size: 1.8rem;
+        color: var(--brand-blue);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(20, 94, 252, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .lightbox-nav,
+        .lightbox-close {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<section class="page-header">
+    <h1>Event Gallery</h1>
+    <p>Relive the memorable moments from our past events and celebrations.</p>
+</section>
+
+<div class="gallery-container">
+    {% for category in gallery %}
+    <div class="gallery-category">
+        <h2 class="category-title">{{ category.category }}</h2>
+        <div class="gallery-grid">
+            {% for image in category.images %}
+            <div class="gallery-item" data-image="{{ image }}">
+                <img src="{{ image }}" alt="{{ category.category }}">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8249;</button>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next">&#8250;</button>
+</div>
+
+<script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    let currentIndex = 0;
+    const images = Array.from(galleryItems).map(item => item.dataset.image);
+
+    // Open lightbox
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentIndex = index;
+            showImage(currentIndex);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Navigate images
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    function showImage(index) {
+        lightboxImg.src = images[index];
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        } else if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+    });
+</script>

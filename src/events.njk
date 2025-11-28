@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: UGIConnect - Events
+
+---
+
+<section class="page-header">
+    <h1>Upcoming Events</h1>
+    <p>Stay updated with the latest happenings, workshops, and celebrations at Uttam Institute.</p>
+</section>
+
+<section class="events-grid">
+    {% for event in events | upcomingOnly | sortByDate %}
+    <div class="event-card-small reveal">
+        <div class="event-image">
+            <img src="{{ event.image }}" alt="{{ event.title }}">
+        </div>
+        <div class="event-details">
+            <span class="event-date-badge">{{ event.date }}</span>
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <div class="event-location">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {{ event.location }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>

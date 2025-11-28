@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Fresher's Party 2025",
+    "date": "Nov 28, 2025",
+    "description": "Let’s come together to make new beginnings unforgettable! A night of music, dance, and celebration.",
+    "location": "Campus Amphitheatre",
+    "image": "/images/College.webp"
+  },
+  {
+    "title": "Annual Tech Symposium",
+    "date": "Dec 05, 2025",
+    "description": "Showcase your projects and innovate with peers. Guest lectures from industry leaders.",
+    "location": "Main Auditorium",
+    "image": "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "title": "Winter Career Fair",
+    "date": "Dec 12, 2025",
+    "description": "Connect with top recruiters and explore internship opportunities. Bring your resume!",
+    "location": "Sports Complex",
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "title": "Alumni Meet 2026",
+    "date": "Jan 10, 2026",
+    "description": "Welcome back our graduates for a day of networking and nostalgia.",
+    "location": "Conference Hall",
+    "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80"
+  }
+]

@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: UGIConnect - Announcements
+
+---
+
+<section class="page-header">
+    <h1>Announcements Board</h1>
+    <p>Keep up with the latest news, academic schedules, and campus updates.</p>
+</section>
+
+<section class="announcements-grid">
+    {% for announcement in announcements %}
+    <div class="announcement-card reveal">
+        <div class="announcement-content">
+            {% if announcement.tags %}
+            <div class="announcement-tags">
+                {% for tag in announcement.tags %}
+                <span class="tag tag-urgent">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <h3 class="announcement-title">{{ announcement.title }}</h3>
+            <p class="announcement-description">{{ announcement.description }}</p>
+            <div class="announcement-date">
+                <svg class="date-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>{{ announcement.date }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>

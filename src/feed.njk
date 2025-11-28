@@ -1,0 +1,42 @@
+---
+permalink: feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>UGI Connect Updates</title>
+  <subtitle>Latest events and announcements from Uttam Institute</subtitle>
+  <link href="https://ugiconnect.netlify.app/feed.xml" rel="self"/>
+  <link href="https://ugiconnect.netlify.app/"/>
+  <updated>{{ announcements[0].date | toIsoString }}</updated>
+  <id>https://ugiconnect.netlify.app/</id>
+  <author>
+    <name>UGI Connect</name>
+  </author>
+
+  {% for item in announcements %}
+  <entry>
+    <title>New Announcement: {{ item.title }}</title>
+    <link href="https://ugiconnect.netlify.app/announcements/"/>
+    <updated>{{ item.date | toIsoString }}</updated>
+    <id>https://ugiconnect.netlify.app/announcements/#{{ item.title | slug }}</id>
+    <content type="html">
+      &lt;p&gt;A new announcement regarding &lt;strong&gt;{{ item.title }}&lt;/strong&gt; has been posted.&lt;/p&gt;
+      &lt;p&gt;&lt;a href="https://ugiconnect.netlify.app/announcements/"&gt;Click here to read the full details on UGI Connect.&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+  {% endfor %}
+
+  {% for item in events %}
+  <entry>
+    <title>Upcoming Event: {{ item.title }}</title>
+    <link href="https://ugiconnect.netlify.app/events/"/>
+    <updated>{{ item.date | toIsoString }}</updated>
+    <id>https://ugiconnect.netlify.app/events/#{{ item.title | slug }}</id>
+    <content type="html">
+      &lt;p&gt;A new event &lt;strong&gt;{{ item.title }}&lt;/strong&gt; is coming up on {{ item.date }}.&lt;/p&gt;
+      &lt;p&gt;&lt;a href="https://ugiconnect.netlify.app/events/"&gt;Click here to view location and details on UGI Connect.&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+  {% endfor %}
+</feed>

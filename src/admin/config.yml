@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  - name: "data"
+    label: "Data"
+    files:
+      - name: "events"
+        label: "Events"
+        file: "src/_data/events.json"
+        fields:
+          - {label: "Events", name: "events", widget: "list", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Date", name: "date", widget: "string"},
+              {label: "Description", name: "description", widget: "text"},
+              {label: "Location", name: "location", widget: "string"},
+              {label: "Image", name: "image", widget: "image"}
+            ]}
+      - name: "announcements"
+        label: "Announcements"
+        file: "src/_data/announcements.json"
+        fields:
+          - {label: "Announcements", name: "announcements", widget: "list", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Date", name: "date", widget: "string"},
+              {label: "Description", name: "description", widget: "text"},
+              {label: "Tags", name: "tags", widget: "list", required: false}
+            ]}
+      - name: "gallery"
+        label: "Gallery"
+        file: "src/_data/gallery.json"
+        fields:
+          - {label: "Categories", name: "gallery", widget: "list", fields: [
+              {label: "Category Name", name: "category", widget: "string"},
+              {label: "Images", name: "images", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+            ]}

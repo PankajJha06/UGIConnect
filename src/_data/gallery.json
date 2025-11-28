@@ -1,0 +1,52 @@
+[
+    {
+        "category": "Fresher's Party 2024",
+        "images": [
+            "/images/College.webp",
+            "/images/uyf20255.jpeg",
+            "/images/College.webp",
+            "/images/uyf20255.jpeg"
+        ]
+    },
+    {
+        "category": "Annual Tech Symposium 2024",
+        "images": [
+            "/images/College.webp",
+            "/images/uyf20255.jpeg",
+            "/images/College.webp"
+        ]
+    },
+    {
+        "category": "Sports Day 2024",
+        "images": [
+            "/images/uyf20255.jpeg",
+            "/images/College.webp",
+            "/images/uyf20255.jpeg"
+        ]
+    },
+    {
+        "category": "Cultural Fest 2024",
+        "images": [
+            "/images/College.webp",
+            "/images/uyf20255.jpeg",
+            "/images/College.webp",
+            "/images/uyf20255.jpeg"
+        ]
+    },
+    {
+        "category": "Independence Day Celebration 2024",
+        "images": [
+            "/images/College.webp",
+            "/images/uyf20255.jpeg",
+            "/images/College.webp"
+        ]
+    },
+    {
+        "category": "Alumni Meet 2024",
+        "images": [
+            "/images/uyf20255.jpeg",
+            "/images/College.webp",
+            "/images/uyf20255.jpeg"
+        ]
+    }
+]
