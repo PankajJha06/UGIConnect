@@ -1,6 +1,11 @@
 {
   "announcements": [
     {
+      "title": "Admit Card",
+      "date": "Dec 2, 2025",
+      "description": "BCA and BBA students are required to come to the college to collect their admit cards."
+    },
+    {
       "title": "Mid-Semester Examinations Schedule",
       "date": "Nov 8, 2025",
       "description": "Mid-semester exams will be conducted from November 20-25. Check your email for detailed schedule.",
