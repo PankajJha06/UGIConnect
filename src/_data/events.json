@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "title": "Fresher's Party 2025",
+      "date": "Nov 30, 2025",
+      "description": "Let's come together to make new beginnings unforgettable! A night of music, dance, and celebration.",
+      "location": "Campus Amphitheatre",
+      "image": "/images/College.webp"
+    },
+    {
       "title": "Annual Tech Symposium",
       "date": "Dec 05, 2025",
       "description": "Showcase your projects and innovate with peers. Guest lectures from industry leaders.",
@@ -13,13 +20,6 @@
       "description": "Connect with top recruiters and explore internship opportunities. Bring your resume!",
       "location": "Sports Complex",
       "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      "title": "Fresher's Party 2025",
-      "date": "Nov 30, 2025",
-      "description": "Let's come together to make new beginnings unforgettable! A night of music, dance, and celebration.",
-      "location": "Campus Amphitheatre",
-      "image": "/images/College.webp"
     },
     {
       "title": "Alumni Meet 2026",
